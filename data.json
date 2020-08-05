@@ -1,0 +1,32 @@
+{
+  "verbs": [
+    {
+      "text": "be",
+      "type": "irregular verb",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "text": "was",
+      "type": "irregular verb",
+      "tenses": [
+        "past simple"
+      ]
+    },
+    {
+      "text": "were",
+      "type": "irregular verb",
+      "tenses": [
+        "past simple"
+      ]
+    },
+    {
+      "text": "been",
+      "type": "irregular verb",
+      "tenses": [
+        "past participle"
+      ]
+    }
+  ]
+}
