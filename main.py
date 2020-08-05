@@ -38,8 +38,8 @@ class Speech:
         return self.text
 
     @text.setter
-    def text(self, text: str):
-        self.__text = text
+    def text(self, value: str):
+        self.__text = value
 
     def play(self):
         if not (self.__exists()):
@@ -74,7 +74,7 @@ class Verb(Speech):
         return self.type
 
     @type.setter
-    def type(self, value):
+    def type(self, value: str):
         self._type = value
 
     @property
@@ -86,7 +86,7 @@ class Verb(Speech):
         return self.tenses
 
     @tenses.setter
-    def tenses(self, value):
+    def tenses(self, value: str):
         self._tenses = value
 
 
@@ -105,13 +105,15 @@ def main():
 
     with open(file='data.json', mode='r') as json_file:
         data = json.load(json_file)
-        for verb in data['verbs']:
-            text, properties = verb.values()
-            speech = Speech(text=text,
-                            voice=Voice.Allison.value,
-                            accept=Accept.WAV.value,
-                            text_to_speech=text_to_speech)
-            speeches.append(speech)
+        for text in data['texts']:
+            phrase, type, tenses = text.values()
+            verb = Verb(text=phrase,
+                        voice=Voice.Allison.value,
+                        accept=Accept.WAV.value,
+                        text_to_speech=text_to_speech,
+                        type=type,
+                        tenses=tenses)
+            speeches.append(verb)
 
     while True:
         for speech in speeches:
