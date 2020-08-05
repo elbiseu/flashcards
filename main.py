@@ -1,7 +1,7 @@
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 from ibm_watson import TextToSpeechV1
-from googletrans import Translator
-from random import randint
+# from googletrans import Translator
+# from random import randint
 import time
 import enum
 import os
@@ -53,7 +53,7 @@ def main():
 
     text_to_speech.set_service_url(service_url)
 
-    translator = Translator()
+    #translator = Translator()
     language = 'en'
     file = open('words.txt', 'r')
 
