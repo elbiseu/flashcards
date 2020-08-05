@@ -2,134 +2,106 @@
   "verbs": [
     {
       "text": "be",
-      "properties": {
-        "type": "irregular verb",
-        "tenses": [
-          "infinitive"
-        ]
-      }
+      "type": "irregular verb",
+      "tenses": [
+        "infinitive"
+      ]
     },
     {
       "text": "was",
-      "properties": {
-        "type": "irregular verb",
-        "tenses": [
-          "past simple"
-        ]
-      }
+      "type": "irregular verb",
+      "tenses": [
+        "past simple"
+      ]
     },
     {
       "text": "were",
-      "properties": {
-        "type": "irregular verb",
-        "tenses": [
-          "past simple"
-        ]
-      }
+      "type": "irregular verb",
+      "tenses": [
+        "past simple"
+      ]
     },
     {
       "text": "been",
-      "properties": {
-        "type": "irregular verb",
-        "tenses": [
-          "past participle"
-        ]
-      }
+      "type": "irregular verb",
+      "tenses": [
+        "past participle"
+      ]
     },
     {
       "text": "light",
-      "properties": {
-        "type": "irregular verb",
-        "tenses": [
-          "infinitive"
-        ]
-      }
+      "type": "irregular verb",
+      "tenses": [
+        "infinitive"
+      ]
     },
     {
       "text": "lit",
-      "properties": {
-        "type": "irregular verb",
-        "tenses": [
-          "past simple",
-          "past participle"
-        ]
-      }
+      "type": "irregular verb",
+      "tenses": [
+        "past simple",
+        "past participle"
+      ]
     },
     {
       "text": "beat",
-      "properties": {
-        "type": "irregular verb",
-        "tenses": [
-          "infinitive",
-          "past simple"
-        ]
-      }
+      "type": "irregular verb",
+      "tenses": [
+        "infinitive",
+        "past simple"
+      ]
     },
     {
       "text": "beaten",
-      "properties": {
-        "type": "irregular verb",
-        "tenses": [
-          "past participle"
-        ]
-      }
+      "type": "irregular verb",
+      "tenses": [
+        "past participle"
+      ]
     },
     {
       "text": "lose",
-      "properties": {
-        "type": "irregular verb",
-        "tenses": [
-          "infinitive",
-          "past simple"
-        ]
-      }
+      "type": "irregular verb",
+      "tenses": [
+        "infinitive",
+        "past simple"
+      ]
     },
     {
       "text": "lost",
-      "properties": {
-        "type": "irregular verb",
-        "tenses": [
-          "past participle"
-        ]
-      }
+      "type": "irregular verb",
+      "tenses": [
+        "past participle"
+      ]
     },
     {
       "text": "become",
-      "properties": {
-        "type": "irregular verb",
-        "tenses": [
-          "infinitive",
-          "past participle"
-        ]
-      }
+      "type": "irregular verb",
+      "tenses": [
+        "infinitive",
+        "past participle"
+      ]
     },
     {
       "text": "became",
-      "properties": {
-        "type": "irregular verb",
-        "tenses": [
-          "past simple"
-        ]
-      }
+      "type": "irregular verb",
+      "tenses": [
+        "past simple"
+      ]
     },
     {
       "text": "make",
-      "properties": {
-        "type": "irregular verb",
-        "tenses": [
-          "infinitive"
-        ]
-      }
+      "type": "irregular verb",
+      "tenses": [
+        "infinitive"
+      ]
     },
     {
       "text": "made",
-      "properties": {
-        "type": "irregular verb",
-        "tenses": [
-          "past simple",
-          "past participle"
-        ]
-      }
+      "type": "irregular verb",
+      "tenses": [
+        "past simple",
+        "past participle"
+      ]
     }
   ]
 }

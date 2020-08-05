@@ -22,13 +22,24 @@ class Tense(enum.Enum):
 
 
 class Speech:
-    def __init__(self, text: str, properties: str, voice: str, accept: str, text_to_speech: TextToSpeechV1):
+    def __init__(self, text: str, voice: str, accept: str, text_to_speech: TextToSpeechV1):
         self.text = text
-        self.properties = properties
         self.voice = voice
         self.accept = accept
-        self.audio_file = '{}.{}'.format(self.text, self.accept)
+        self.audio_file = '{}.{}'.format(text, accept)
         self.text_to_speech = text_to_speech
+
+    @property
+    def text(self):
+        return self.__text
+
+    @text.getter
+    def text(self):
+        return self.text
+
+    @text.setter
+    def text(self, text: str):
+        self.__text = text
 
     def play(self):
         if not (self.__exists()):
@@ -47,8 +58,36 @@ class Speech:
                     accept='audio/{}'.format(self.accept)
                 ).get_result().content)
 
-    def __str__(self):
-        return '{}\n{}'.format(self.text, self.properties)
+
+class Verb(Speech):
+    def __init__(self, text: str, voice: str, accept: str, text_to_speech: TextToSpeechV1, type: str, tenses: list):
+        super().__init__(text, voice, accept, text_to_speech)
+        self.type = type
+        self.tenses = tenses
+
+    @property
+    def type(self):
+        return self._type
+
+    @type.getter
+    def type(self):
+        return self.type
+
+    @type.setter
+    def type(self, value):
+        self._type = value
+
+    @property
+    def tenses(self):
+        return self._tenses
+
+    @tenses.getter
+    def tenses(self):
+        return self.tenses
+
+    @tenses.setter
+    def tenses(self, value):
+        self._tenses = value
 
 
 def main():
@@ -68,9 +107,7 @@ def main():
         data = json.load(json_file)
         for verb in data['verbs']:
             text, properties = verb.values()
-            type, tenses = properties.values()
             speech = Speech(text=text,
-                            properties='{}\n{}'.format(type, ', '.join(tenses)),
                             voice=Voice.Allison.value,
                             accept=Accept.WAV.value,
                             text_to_speech=text_to_speech)
