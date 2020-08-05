@@ -1,0 +1,3 @@
+ibm-cloud-sdk-core
+ibm_watson
+python-vlc
