@@ -127,3 +127,12 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# ID config
+.idea/
+
+# OS files
+.DS_Store
+
+# Accept files
+*.wav

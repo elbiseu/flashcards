@@ -21,12 +21,13 @@ class Tense(enum.Enum):
     PastParticiple = 'past participle'
 
 
-class Text:
-    def __init__(self, text: str, voice: str, accept: str, text_to_speech: TextToSpeechV1):
+class Speech:
+    def __init__(self, text: str, properties: str, voice: str, accept: str, text_to_speech: TextToSpeechV1):
         self.text = text
+        self.properties = properties
         self.voice = voice
         self.accept = accept
-        self.audio_file = '%s.%s' % (self.text, self.accept)
+        self.audio_file = '{}.{}'.format(self.text, self.accept)
         self.text_to_speech = text_to_speech
 
     def play(self):
@@ -35,7 +36,7 @@ class Text:
         vlc.MediaPlayer(self.audio_file).play()
 
     def __exists(self):
-        return os.path.exists('./%s' % self.audio_file)
+        return os.path.exists('./{}'.format(self.audio_file))
 
     def __generate_speech(self):
         with open(file=self.audio_file, mode='wb') as audio_file:
@@ -43,21 +44,11 @@ class Text:
                 self.text_to_speech.synthesize(
                     text=self.text,
                     voice=self.voice,
-                    accept='audio/%s' % self.accept
+                    accept='audio/{}'.format(self.accept)
                 ).get_result().content)
 
     def __str__(self):
-        return 'text: ' % self.text
-
-
-class Verb(Text):
-    def __init__(self, text: str, voice: str, accept: str, text_to_speech: TextToSpeechV1, type: str, tenses: list, ):
-        super(Verb, self).__init__(text, voice, accept, text_to_speech)
-        self.type = type
-        self.tenses = tenses
-
-    def __str__(self):
-        return 'type: %s tense: %s' % self.type, self.tenses
+        return '{}\n{}'.format(self.text, self.properties)
 
 
 def main():
@@ -71,22 +62,26 @@ def main():
 
     text_to_speech.set_service_url(service_url)
 
-    verbs = []
+    speeches = []
 
     with open(file='data.json', mode='r') as json_file:
         data = json.load(json_file)
         for verb in data['verbs']:
-            text, type, tenses = verb.values()
-            verbs.append(Verb(text, Voice.Allison.value, Accept.WAV.value, text_to_speech, type, tenses))
+            text, properties = verb.values()
+            type, tenses = properties.values()
+            speech = Speech(text=text,
+                            properties='{}\n{}'.format(type, ', '.join(tenses)),
+                            voice=Voice.Allison.value,
+                            accept=Accept.WAV.value,
+                            text_to_speech=text_to_speech)
+            speeches.append(speech)
 
-    for verb in verbs:
-        verb.play()
-
-    # text = Text('been', Voice.Allison.value, Accept.WAV.value, text_to_speech)
-    # text.play()
-
-    #
+    while True:
+        for speech in speeches:
+            print(speech)
+            speech.play()
+            time.sleep(1)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
