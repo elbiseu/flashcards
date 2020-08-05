@@ -1,11 +1,10 @@
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 from ibm_watson import TextToSpeechV1
-# from googletrans import Translator
-# from random import randint
 import time
 import enum
 import os
 import vlc
+import json
 
 
 class Voice(enum.Enum):
@@ -14,6 +13,12 @@ class Voice(enum.Enum):
 
 class Accept(enum.Enum):
     WAV = 'wav'
+
+
+class Tense(enum.Enum):
+    Infinitive = 'infinitive'
+    PastSimple = 'past simple'
+    PastParticiple = 'past participle'
 
 
 class Text:
@@ -41,6 +46,19 @@ class Text:
                     accept='audio/%s' % self.accept
                 ).get_result().content)
 
+    def __str__(self):
+        return 'text: ' % self.text
+
+
+class Verb(Text):
+    def __init__(self, text: str, voice: str, accept: str, text_to_speech: TextToSpeechV1, type: str, tenses: list, ):
+        super(Verb, self).__init__(text, voice, accept, text_to_speech)
+        self.type = type
+        self.tenses = tenses
+
+    def __str__(self):
+        return 'type: %s tense: %s' % self.type, self.tenses
+
 
 def main():
     apikey = os.getenv('TEXT_TO_SPEECH_IAM_APIKEY')
@@ -53,21 +71,21 @@ def main():
 
     text_to_speech.set_service_url(service_url)
 
-    #translator = Translator()
-    language = 'en'
-    file = open('words.txt', 'r')
+    verbs = []
 
-    list_of_words = []
-    translator_words = []
+    with open(file='data.json', mode='r') as json_file:
+        data = json.load(json_file)
+        for verb in data['verbs']:
+            text, type, tenses = verb.values()
+            verbs.append(Verb(text, Voice.Allison.value, Accept.WAV.value, text_to_speech, type, tenses))
 
-    missing_words = {'stir': 'revolver', 'carve': 'trinchar', 'break': 'romper', 'beat': 'batir', }
+    for verb in verbs:
+        verb.play()
 
-    # translator_words.append(translator.translate(line, src=language, dest='es').text)
+    # text = Text('been', Voice.Allison.value, Accept.WAV.value, text_to_speech)
+    # text.play()
 
-    text = Text('been', Voice.Allison.value, Accept.WAV.value, text_to_speech)
-    text.play()
-
-    time.sleep(1)
+    #
 
 
 if __name__ == "__main__":
