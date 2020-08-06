@@ -88,6 +88,430 @@
         "past simple",
         "past participle"
       ]
+    },
+    {
+      "irregular_verb": "begin",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "began",
+      "tenses": [
+        "past simple"
+      ]
+    },
+    {
+      "irregular_verb": "begun",
+      "tenses": [
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "mean",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "meant",
+      "tenses": [
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "bend",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "bent",
+      "tenses": [
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "meet",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "met",
+      "tenses": [
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "bet",
+      "tenses": [
+        "infinitive",
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "pay",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "paid",
+      "tenses": [
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "bite",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "bit",
+      "tenses": [
+        "past simple"
+      ]
+    },
+    {
+      "irregular_verb": "bitten",
+      "tenses": [
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "put",
+      "tenses": [
+        "infinitive",
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "blow",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "blew",
+      "tenses": [
+        "past simple"
+      ]
+    },
+    {
+      "irregular_verb": "blown",
+      "tenses": [
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "read",
+      "tenses": [
+        "infinitive",
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "break",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "broke",
+      "tenses": [
+        "past simple"
+      ]
+    },
+    {
+      "irregular_verb": "broken",
+      "tenses": [
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "ride",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "rode",
+      "tenses": [
+        "past simple"
+      ]
+    },
+    {
+      "irregular_verb": "ridden",
+      "tenses": [
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "bring",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "ride",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "rode",
+      "tenses": [
+        "past simple"
+      ]
+    },
+    {
+      "irregular_verb": "ridden",
+      "tenses": [
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "bring",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "brought",
+      "tenses": [
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "ring",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "rang",
+      "tenses": [
+        "past simple"
+      ]
+    },
+    {
+      "irregular_verb": "rung",
+      "tenses": [
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "broadcast",
+      "tenses": [
+        "infinitive",
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "rise",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "rose",
+      "tenses": [
+        "past simple"
+      ]
+    },
+    {
+      "irregular_verb": "risen",
+      "tenses": [
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "build",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "built",
+      "tenses": [
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "run",
+      "tenses": [
+        "infinitive",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "ran",
+      "tenses": [
+        "past simple"
+      ]
+    },
+    {
+      "irregular_verb": "burst",
+      "tenses": [
+        "infinitive",
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "say",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "said",
+      "tenses": [
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "buy",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "bought",
+      "tenses": [
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "see",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "saw",
+      "tenses": [
+        "past simple"
+      ]
+    },
+    {
+      "irregular_verb": "seen",
+      "tenses": [
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "catch",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "caught",
+      "tenses": [
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "seek",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "sought",
+      "tenses": [
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "choose",
+      "tenses": [
+        "past simple"
+      ]
+    },
+    {
+      "irregular_verb": "chose",
+      "tenses": [
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "chosen",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "sell",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "sold",
+      "tenses": [
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "come",
+      "tenses": [
+        "infinitive",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "came",
+      "tenses": [
+        "past simple"
+      ]
+    },
+    {
+      "irregular_verb": "send",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "sent",
+      "tenses": [
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "cost",
+      "tenses": [
+        "infinitive",
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "set",
+      "tenses": [
+        "infinitive",
+        "past simple",
+        "past participle"
+      ]
     }
   ]
 }
