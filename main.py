@@ -1,125 +1,56 @@
+import json
+import os
+import time
+
+import vlc
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 from ibm_watson import TextToSpeechV1
-import time
-import enum
-import os
-import vlc
-import json
 
 
-class Voice(enum.Enum):
-    Allison = 'en-US_AllisonV3Voice'
-
-
-class Accept(enum.Enum):
-    WAV = 'wav'
-
-
-class Tense(enum.Enum):
-    Infinitive = 'infinitive'
-    PastSimple = 'past simple'
-    PastParticiple = 'past participle'
-
-
-class Speech:
-    def __init__(self, text: str, voice: str, accept: str, text_to_speech: TextToSpeechV1):
-        self.text = text
-        self.voice = voice
-        self.accept = accept
-        self.audio_file = '{}.{}'.format(text, accept)
-        self.text_to_speech = text_to_speech
-
-    @property
-    def text(self):
-        return self.__text
-
-    @text.getter
-    def text(self):
-        return self.text
-
-    @text.setter
-    def text(self, value: str):
-        self.__text = value
-
-    def play(self):
-        if not (self.__exists()):
-            self.__generate_speech()
-        vlc.MediaPlayer(self.audio_file).play()
-
-    def __exists(self):
-        return os.path.exists('./{}'.format(self.audio_file))
-
-    def __generate_speech(self):
-        with open(file=self.audio_file, mode='wb') as audio_file:
+def generate_speech(path, text, text_to_speech):
+    if exists(path):
+        print(text)
+    else:
+        with open(file=path, mode='wb') as audio_file:
             audio_file.write(
-                self.text_to_speech.synthesize(
-                    text=self.text,
-                    voice=self.voice,
-                    accept='audio/{}'.format(self.accept)
+                text_to_speech.synthesize(
+                    text=text,
+                    voice='en-US_AllisonV3Voice',
+                    accept='audio/wav'
                 ).get_result().content)
 
 
-class Verb(Speech):
-    def __init__(self, text: str, voice: str, accept: str, text_to_speech: TextToSpeechV1, type: str, tenses: list):
-        super().__init__(text, voice, accept, text_to_speech)
-        self.type = type
-        self.tenses = tenses
-
-    @property
-    def type(self):
-        return self._type
-
-    @type.getter
-    def type(self):
-        return self.type
-
-    @type.setter
-    def type(self, value: str):
-        self._type = value
-
-    @property
-    def tenses(self):
-        return self._tenses
-
-    @tenses.getter
-    def tenses(self):
-        return self.tenses
-
-    @tenses.setter
-    def tenses(self, value: str):
-        self._tenses = value
+def exists(path):
+    return os.path.exists('./{}'.format(path))
 
 
 def main():
-    apikey = os.getenv('TEXT_TO_SPEECH_IAM_APIKEY')
-    service_url = os.getenv('TEXT_TO_SPEECH_URL')
+    text_to_speech_iam_apikey = os.getenv('TEXT_TO_SPEECH_IAM_APIKEY')
+    text_to_speech_url = os.getenv('TEXT_TO_SPEECH_URL')
 
-    authenticator = IAMAuthenticator(apikey)
+    authenticator = IAMAuthenticator(text_to_speech_iam_apikey)
     text_to_speech = TextToSpeechV1(
         authenticator=authenticator
     )
 
-    text_to_speech.set_service_url(service_url)
-
-    speeches = []
+    text_to_speech.set_service_url(text_to_speech_url)
 
     with open(file='data.json', mode='r') as json_file:
-        data = json.load(json_file)
-        for text in data['texts']:
-            phrase, type, tenses = text.values()
-            verb = Verb(text=phrase,
-                        voice=Voice.Allison.value,
-                        accept=Accept.WAV.value,
-                        text_to_speech=text_to_speech,
-                        type=type,
-                        tenses=tenses)
-            speeches.append(verb)
+        irregular_verbs = json.load(json_file)['irregular_verbs']
 
-    while True:
-        for speech in speeches:
-            print(speech)
-            speech.play()
-            time.sleep(1)
+    for irregular_verb in irregular_verbs:
+        irregular_verb, tenses = irregular_verb.values()
+        generate_speech(path='{}.{}'.format(irregular_verb, 'wav'),
+                        text='{}, {}'.format(irregular_verb, ', and '.join(tenses)),
+                        text_to_speech=text_to_speech)
+
+    for irregular_verb in irregular_verbs:
+        irregular_verb, tenses = irregular_verb.values()
+        path = '{}.{}'.format(irregular_verb, 'wav')
+        if exists(path):
+            print('./{}'.format(path))
+            vlc.MediaPlayer('./{}'.format(path)).play()
+            time.sleep(5)
 
 
 if __name__ == '__main__':
