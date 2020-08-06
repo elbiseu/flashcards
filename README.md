@@ -1,4 +1,4 @@
-# Memorize
+# Repeat with me
 ## Configuration
 Configure environment variables
 <br>
