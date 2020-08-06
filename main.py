@@ -8,9 +8,7 @@ from ibm_watson import TextToSpeechV1
 
 
 def generate_speech(path, text, text_to_speech):
-    if exists(path):
-        print(text)
-    else:
+    if not exists(path):
         with open(file=path, mode='wb') as audio_file:
             audio_file.write(
                 text_to_speech.synthesize(
@@ -48,9 +46,9 @@ def main():
         irregular_verb, tenses = irregular_verb.values()
         path = '{}.{}'.format(irregular_verb, 'wav')
         if exists(path):
-            print('./{}'.format(path))
+            print('{}\n{}\n'.format(irregular_verb, ', and '.join(tenses)))
             vlc.MediaPlayer('./{}'.format(path)).play()
-            time.sleep(5)
+            time.sleep(3)
 
 
 if __name__ == '__main__':
