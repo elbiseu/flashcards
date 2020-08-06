@@ -1,6 +1,8 @@
 import json
 import os
+import re
 import time
+from random import randint
 
 import vlc
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
@@ -36,19 +38,36 @@ def main():
     with open(file='data.json', mode='r') as json_file:
         irregular_verbs = json.load(json_file)['irregular_verbs']
 
+    generate_speech(path='good.wav',
+                    text='good!',
+                    text_to_speech=text_to_speech)
+
+    generate_speech(path='try_again.wav',
+                    text='try again!',
+                    text_to_speech=text_to_speech)
+
     for irregular_verb in irregular_verbs:
         irregular_verb, tenses = irregular_verb.values()
         generate_speech(path='{}.{}'.format(irregular_verb, 'wav'),
                         text='{}, {}'.format(irregular_verb, ', and '.join(tenses)),
                         text_to_speech=text_to_speech)
+        generate_speech(path='{}_spell.{}'.format(irregular_verb, 'wav'),
+                        text=', '.join([letter for letter in re.split(r'(\w)', irregular_verb) if letter.isalpha()]),
+                        text_to_speech=text_to_speech)
 
-    for irregular_verb in irregular_verbs:
+    while True:
+        irregular_verb = irregular_verbs[randint(0, len(irregular_verbs) - 1)]
         irregular_verb, tenses = irregular_verb.values()
-        path = '{}.{}'.format(irregular_verb, 'wav')
-        if exists(path):
-            print('{}\n{}\n'.format(irregular_verb, ', and '.join(tenses)))
-            vlc.MediaPlayer('./{}'.format(path)).play()
-            time.sleep(3)
+        print('\n{}\n{}\n'.format(irregular_verb, ', and '.join(tenses)))
+        vlc.MediaPlayer('./{}.{}'.format(irregular_verb, 'wav')).play()
+        time.sleep(3)
+        vlc.MediaPlayer('./{}_spell.{}'.format(irregular_verb, 'wav')).play()
+        print(' '.join([letter for letter in re.split(r'(\w)', irregular_verb) if letter.isalpha()]))
+        while input('type \'{}\': '.format(irregular_verb)).lower() != irregular_verb:
+            vlc.MediaPlayer('./try_again.wav').play()
+            time.sleep(1)
+        vlc.MediaPlayer('./good.wav').play()
+        time.sleep(1)
 
 
 if __name__ == '__main__':
