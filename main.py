@@ -46,7 +46,13 @@ def main():
                     text='try again!',
                     text_to_speech=text_to_speech)
 
+    number_of_inputs = len(irregular_verbs)
+    i = 0
+
     for irregular_verb in irregular_verbs:
+        number_of_inputs = number_of_inputs
+        i += 1
+        print('generate {} of {} audios'.format(i, number_of_inputs))
         irregular_verb, tenses = irregular_verb.values()
         generate_speech(path='{}.{}'.format(irregular_verb, 'wav'),
                         text='{}, {}'.format(irregular_verb, ', and '.join(tenses)),
