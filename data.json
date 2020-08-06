@@ -1,103 +1,89 @@
 {
-  "texts": [
+  "irregular_verbs": [
     {
-      "phrase": "be",
-      "type": "irregular verb",
+      "irregular_verb": "be",
       "tenses": [
         "infinitive"
       ]
     },
     {
-      "phrase": "was",
-      "type": "irregular verb",
+      "irregular_verb": "was",
       "tenses": [
         "past simple"
       ]
     },
     {
-      "phrase": "were",
-      "type": "irregular verb",
+      "irregular_verb": "were",
       "tenses": [
         "past simple"
       ]
     },
     {
-      "phrase": "been",
-      "type": "irregular verb",
+      "irregular_verb": "been",
       "tenses": [
         "past participle"
       ]
     },
     {
-      "phrase": "light",
-      "type": "irregular verb",
+      "irregular_verb": "light",
       "tenses": [
         "infinitive"
       ]
     },
     {
-      "phrase": "lit",
-      "type": "irregular verb",
+      "irregular_verb": "lit",
       "tenses": [
         "past simple",
         "past participle"
       ]
     },
     {
-      "phrase": "beat",
-      "type": "irregular verb",
+      "irregular_verb": "beat",
       "tenses": [
         "infinitive",
         "past simple"
       ]
     },
     {
-      "phrase": "beaten",
-      "type": "irregular verb",
+      "irregular_verb": "beaten",
       "tenses": [
         "past participle"
       ]
     },
     {
-      "phrase": "lose",
-      "type": "irregular verb",
+      "irregular_verb": "lose",
       "tenses": [
         "infinitive",
         "past simple"
       ]
     },
     {
-      "phrase": "lost",
-      "type": "irregular verb",
+      "irregular_verb": "lost",
       "tenses": [
         "past participle"
       ]
     },
     {
-      "phrase": "become",
-      "type": "irregular verb",
+      "irregular_verb": "become",
       "tenses": [
         "infinitive",
         "past participle"
       ]
     },
     {
-      "phrase": "became",
-      "type": "irregular verb",
+      "irregular_verb": "became",
       "tenses": [
         "past simple"
       ]
     },
     {
-      "phrase": "make",
-      "type": "irregular verb",
+      "irregular_verb": "make",
       "tenses": [
         "infinitive"
       ]
     },
     {
-      "phrase": "made",
-      "type": "irregular verb",
+      "irregular_verb": "made",
       "tenses": [
         "past simple",
         "past participle"
