@@ -2,6 +2,7 @@ import json
 import random
 
 from dictionary import definition
+from translator import translate
 from player import play
 
 
@@ -36,6 +37,9 @@ def main():
 
         if input('Do you want to know the meaning of this word?\nIf yes, type \'y\': ') == 'y':
             definition(irregular_verb)
+
+        if input('Do you want to translate this word?\nIf yes, type \'y\': ') == 'y':
+            translate(irregular_verb)
 
         if not input('Do you want to continue?\nIf yes, type \'y\': ') == 'y':
             break
