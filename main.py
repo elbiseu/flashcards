@@ -1,7 +1,6 @@
 import json
 import os
 import random
-import re
 import time
 from datetime import datetime
 
@@ -36,9 +35,8 @@ def main():
         print(irregular_verb)
         play(irregular_verb)
 
-        for letter in re.split(r'(\w)', irregular_verb):
-            if letter.isalpha():
-                play(letter)
+        for letter in irregular_verb:
+            play(letter)
 
         for tense in tenses:
             play(tense)
