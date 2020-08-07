@@ -1,17 +1,8 @@
 import json
-import os
 import random
-import time
 
-import vlc
-
-
-def play(path):
-    if os.path.exists('./resources/{}.wav'.format(path)):
-        vlc.MediaPlayer('./resources/{}.wav'.format(path)).play()
-        time.sleep(1)
-    else:
-        print('The path \'{}\' does not exist.'.format(path))
+from dictionary import definition
+from player import play
 
 
 def main():
@@ -22,12 +13,13 @@ def main():
         irregular_verbs = json.load(json_file)['irregular_verbs']
 
     while True:
-        irregular_verb = random.choice(irregular_verbs)
-        irregular_verb, tenses = irregular_verb.values()
+        irregular_verb, tenses = random.choice(irregular_verbs).values()
 
         print(irregular_verb)
-        print('https://www.merriam-webster.com/dictionary/{}'.format(irregular_verb))
         play(irregular_verb)
+
+        if input('Do you want to know the meaning of this word?\nIf yes, type \'yes\': ') == 'yes':
+            definition(irregular_verb)
 
         for letter in irregular_verb:
             play(letter)
@@ -36,7 +28,7 @@ def main():
             print(tense)
             play(tense)
 
-        while not input('type \'{}\': '.format(irregular_verb)).lower() == irregular_verb:
+        while not input('Type the word\'{}\': '.format(irregular_verb)) == irregular_verb:
             play(random.choice(condolences))
 
         play(random.choice(congratulations))
