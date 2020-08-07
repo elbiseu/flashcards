@@ -4,9 +4,9 @@ import os
 import random
 import re
 import time
+from datetime import datetime
 
 import vlc
-from datetime import datetime
 
 
 class Hello(enum.Enum):
