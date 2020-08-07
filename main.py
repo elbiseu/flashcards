@@ -30,16 +30,25 @@ def main():
         for tense in tenses:
             play(tense)
 
+        play('type')
+
         while not input('Type the word \'{}\': '.format(irregular_verb)) == irregular_verb:
             play(random.choice(condolences))
 
         play(random.choice(congratulations))
+        play('definition')
 
         if input('Do you want to know the meaning of this word?\nIf yes, type \'y\': ') == 'y':
+            play('definitions')
             definition(irregular_verb)
 
+        play('translate')
+
         if input('Do you want to translate this word?\nIf yes, type \'y\': ') == 'y':
+            play('translations')
             translate(irregular_verb)
+
+        play('continue')
 
         if not input('Do you want to continue?\nIf yes, type \'y\': ') == 'y':
             break
