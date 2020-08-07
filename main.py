@@ -2,7 +2,6 @@ import json
 import os
 import random
 import time
-from datetime import datetime
 
 import vlc
 
@@ -16,35 +15,31 @@ def play(path):
 
 
 def main():
-    now = datetime.now()
+    condolences = ['try again', 'try it one more time']
+    congratulations = ['approved', 'go ahead', 'nice', 'ok', 'okeydokey', 'very well']
 
     with open('data.json', 'r') as json_file:
         irregular_verbs = json.load(json_file)['irregular_verbs']
-
-    if 23 > now.hour < 12:
-        play(random.choice(['good_morning', 'morning']))
-    elif 18 > now.hour > 11:
-        play('good_afternoon')
-    else:
-        play('good_evening')
 
     while True:
         irregular_verb = random.choice(irregular_verbs)
         irregular_verb, tenses = irregular_verb.values()
 
         print(irregular_verb)
+        print('https://www.merriam-webster.com/dictionary/{}'.format(irregular_verb))
         play(irregular_verb)
 
         for letter in irregular_verb:
             play(letter)
 
         for tense in tenses:
+            print(tense)
             play(tense)
 
-        while input('type \'{}\': '.format(irregular_verb)).lower() != irregular_verb:
-            play(random.choice(['try_again', 'try_it_one_more_time']))
+        while not input('type \'{}\': '.format(irregular_verb)).lower() == irregular_verb:
+            play(random.choice(condolences))
 
-        play(random.choice(['approved', 'go_ahead', 'nice', 'ok', 'okeydokey', 'very_well']))
+        play(random.choice(congratulations))
 
 
 if __name__ == '__main__':
