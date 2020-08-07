@@ -23,8 +23,8 @@ class Tense(enum.Enum):
 
 
 def play(path):
-    if os.path.exists('./{}.wav'.format(path)):
-        vlc.MediaPlayer('./{}.wav'.format(path)).play()
+    if os.path.exists('./resources/{}.wav'.format(path)):
+        vlc.MediaPlayer('./resources/{}.wav'.format(path)).play()
     else:
         print('The path \'{}\' does not exist.'.format(path))
 
