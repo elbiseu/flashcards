@@ -18,10 +18,13 @@ def main():
         print('Irregular verb: {}'.format(irregular_verb))
         play(irregular_verb)
 
+        print('Spelling: ', end='')
+
         for letter in irregular_verb:
+            print(letter, end=' ')
             play(letter)
 
-        print('Tenses: {}'.format(', and'.join(tenses)))
+        print('\nTenses: {}'.format(', and '.join(tenses)))
 
         for tense in tenses:
             play(tense)
@@ -31,10 +34,10 @@ def main():
 
         play(random.choice(congratulations))
 
-        if input('Do you want to know the meaning of this word?\nIf yes, type \'yes\': ') == 'yes':
+        if input('Do you want to know the meaning of this word?\nIf yes, type \'y\': ') == 'y':
             definition(irregular_verb)
 
-        if not input('Do you want to continue?\nIf yes, type \'yes\': ') == 'yes':
+        if not input('Do you want to continue?\nIf yes, type \'y\': ') == 'y':
             break
 
 
