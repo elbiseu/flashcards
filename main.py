@@ -57,11 +57,8 @@ def main():
 
         for letter in re.split(r'(\w)', irregular_verb):
             if letter.isalpha():
-                print(letter, end=' ')
                 play(letter)
                 time.sleep(1)
-
-        print('\n{}'.format(', and '.join(tenses)))
 
         if 'infinitive' in tenses:
             play(Tense.Infinitive.value)
