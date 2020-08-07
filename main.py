@@ -2,8 +2,8 @@ import json
 import random
 
 from dictionary import definition
-from translator import translate
 from player import play
+from translator import translate
 
 
 def main():
