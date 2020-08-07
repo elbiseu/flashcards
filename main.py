@@ -15,23 +15,27 @@ def main():
     while True:
         irregular_verb, tenses = random.choice(irregular_verbs).values()
 
-        print(irregular_verb)
+        print('Irregular verb: {}'.format(irregular_verb))
         play(irregular_verb)
-
-        if input('Do you want to know the meaning of this word?\nIf yes, type \'yes\': ') == 'yes':
-            definition(irregular_verb)
 
         for letter in irregular_verb:
             play(letter)
 
+        print('Tenses: {}'.format(', and'.join(tenses)))
+
         for tense in tenses:
-            print(tense)
             play(tense)
 
-        while not input('Type the word\'{}\': '.format(irregular_verb)) == irregular_verb:
+        while not input('Type the word \'{}\': '.format(irregular_verb)) == irregular_verb:
             play(random.choice(condolences))
 
         play(random.choice(congratulations))
+
+        if input('Do you want to know the meaning of this word?\nIf yes, type \'yes\': ') == 'yes':
+            definition(irregular_verb)
+
+        if not input('Do you want to continue?\nIf yes, type \'yes\': ') == 'yes':
+            break
 
 
 if __name__ == '__main__':
