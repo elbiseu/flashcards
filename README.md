@@ -1,4 +1,4 @@
-# Repeat with me
+# Irregular verbs
 ## Configuration
 Create a virtual environment
 <br>
