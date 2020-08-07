@@ -53,13 +53,13 @@
     {
       "irregular_verb": "lose",
       "tenses": [
-        "infinitive",
-        "past simple"
+        "infinitive"
       ]
     },
     {
       "irregular_verb": "lost",
       "tenses": [
+        "past simple",
         "past participle"
       ]
     },
@@ -262,30 +262,6 @@
       ]
     },
     {
-      "irregular_verb": "ride",
-      "tenses": [
-        "infinitive"
-      ]
-    },
-    {
-      "irregular_verb": "rode",
-      "tenses": [
-        "past simple"
-      ]
-    },
-    {
-      "irregular_verb": "ridden",
-      "tenses": [
-        "past participle"
-      ]
-    },
-    {
-      "irregular_verb": "bring",
-      "tenses": [
-        "infinitive"
-      ]
-    },
-    {
       "irregular_verb": "brought",
       "tenses": [
         "past simple",
@@ -443,19 +419,19 @@
     {
       "irregular_verb": "choose",
       "tenses": [
-        "past simple"
+        "infinitive"
       ]
     },
     {
       "irregular_verb": "chose",
       "tenses": [
-        "past participle"
+        "past simple"
       ]
     },
     {
       "irregular_verb": "chosen",
       "tenses": [
-        "infinitive"
+        "past participle"
       ]
     },
     {
@@ -542,7 +518,6 @@
     {
       "irregular_verb": "sewn",
       "tenses": [
-        "past simple",
         "past participle"
       ]
     },
@@ -680,19 +655,19 @@
       ]
     },
     {
-      "irregular_verb": "draw",
+      "irregular_verb": "drink",
       "tenses": [
         "infinitive"
       ]
     },
     {
-      "irregular_verb": "drew",
+      "irregular_verb": "drank",
       "tenses": [
         "past simple"
       ]
     },
     {
-      "irregular_verb": "drawn",
+      "irregular_verb": "drunk",
       "tenses": [
         "past participle"
       ]
@@ -848,32 +823,6 @@
       ]
     },
     {
-      "irregular_verb": "feel",
-      "tenses": [
-        "infinitive"
-      ]
-    },
-    {
-      "irregular_verb": "felt",
-      "tenses": [
-        "past simple",
-        "past participle"
-      ]
-    },
-    {
-      "irregular_verb": "slide",
-      "tenses": [
-        "infinitive"
-      ]
-    },
-    {
-      "irregular_verb": "slid",
-      "tenses": [
-        "past simple",
-        "past participle"
-      ]
-    },
-    {
       "irregular_verb": "slide",
       "tenses": [
         "infinitive"
@@ -914,7 +863,7 @@
     {
       "irregular_verb": "spoken",
       "tenses": [
-        "past simple"
+        "past participle"
       ]
     },
     {
@@ -1013,7 +962,7 @@
         "past participle"
       ]
     },
-        {
+    {
       "irregular_verb": "spread",
       "tenses": [
         "infinitive",
@@ -1021,7 +970,7 @@
         "past participle"
       ]
     },
-        {
+    {
       "irregular_verb": "forget",
       "tenses": [
         "infinitive"
@@ -1125,19 +1074,587 @@
       ]
     },
     {
-      "irregular_verb": "steal",
+      "irregular_verb": "get",
       "tenses": [
         "infinitive"
       ]
     },
     {
-      "irregular_verb": "stole",
+      "irregular_verb": "got",
+      "tenses": [
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "gotten",
+      "tenses": [
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "stick",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "stuck",
+      "tenses": [
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "give",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "gave",
       "tenses": [
         "past simple"
       ]
     },
     {
-      "irregular_verb": "stolen",
+      "irregular_verb": "given",
+      "tenses": [
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "sting",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "stung",
+      "tenses": [
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "go",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "went",
+      "tenses": [
+        "past simple"
+      ]
+    },
+    {
+      "irregular_verb": "gone",
+      "tenses": [
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "stink",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "stank",
+      "tenses": [
+        "past simple"
+      ]
+    },
+    {
+      "irregular_verb": "stunk",
+      "tenses": [
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "grow",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "grew",
+      "tenses": [
+        "past simple"
+      ]
+    },
+    {
+      "irregular_verb": "grown",
+      "tenses": [
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "strike",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "struck",
+      "tenses": [
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "hang",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "hung",
+      "tenses": [
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "swear",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "swore",
+      "tenses": [
+        "past simple"
+      ]
+    },
+    {
+      "irregular_verb": "sworn",
+      "tenses": [
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "have",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "had",
+      "tenses": [
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "sweep",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "swept",
+      "tenses": [
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "hear",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "heard",
+      "tenses": [
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "swim",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "swam",
+      "tenses": [
+        "past simple"
+      ]
+    },
+    {
+      "irregular_verb": "swum",
+      "tenses": [
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "hide",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "hid",
+      "tenses": [
+        "past simple"
+      ]
+    },
+    {
+      "irregular_verb": "hidden",
+      "tenses": [
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "swing",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "swung",
+      "tenses": [
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "hit",
+      "tenses": [
+        "infinitive",
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "take",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "took",
+      "tenses": [
+        "past simple"
+      ]
+    },
+    {
+      "irregular_verb": "taken",
+      "tenses": [
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "hold",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "held",
+      "tenses": [
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "teach",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "taught",
+      "tenses": [
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "hurt",
+      "tenses": [
+        "infinitive",
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "tear",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "tore",
+      "tenses": [
+        "past simple"
+      ]
+    },
+    {
+      "irregular_verb": "torn",
+      "tenses": [
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "keep",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "kept",
+      "tenses": [
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "tell",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "told",
+      "tenses": [
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "kneel",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "knelt",
+      "tenses": [
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "think",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "thought",
+      "tenses": [
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "know",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "knew",
+      "tenses": [
+        "past simple"
+      ]
+    },
+    {
+      "irregular_verb": "known",
+      "tenses": [
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "throw",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "threw",
+      "tenses": [
+        "past simple"
+      ]
+    },
+    {
+      "irregular_verb": "thrown",
+      "tenses": [
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "lay",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "laid",
+      "tenses": [
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "understand",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "understood",
+      "tenses": [
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "lead",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "led",
+      "tenses": [
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "wake",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "woke",
+      "tenses": [
+        "past simple"
+      ]
+    },
+    {
+      "irregular_verb": "woken",
+      "tenses": [
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "leave",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "left",
+      "tenses": [
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "wear",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "wore",
+      "tenses": [
+        "past simple"
+      ]
+    },
+    {
+      "irregular_verb": "worn",
+      "tenses": [
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "lend",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "lent",
+      "tenses": [
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "weep",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "wept",
+      "tenses": [
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "let",
+      "tenses": [
+        "infinitive",
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "win",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "won",
+      "tenses": [
+        "past simple",
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "lie",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "lay",
+      "tenses": [
+        "past simple"
+      ]
+    },
+    {
+      "irregular_verb": "lain",
+      "tenses": [
+        "past participle"
+      ]
+    },
+    {
+      "irregular_verb": "write",
+      "tenses": [
+        "infinitive"
+      ]
+    },
+    {
+      "irregular_verb": "wrote",
+      "tenses": [
+        "past simple"
+      ]
+    },
+    {
+      "irregular_verb": "written",
       "tenses": [
         "past participle"
       ]
