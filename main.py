@@ -16,17 +16,17 @@ def main():
         irregular_verbs = json.load(json_file)['irregular_verbs']
 
     randomly = input('Do you want to learn the English irregular verbs randomly?\nType \'y\' to learn the English '
-                     'irregular verbs randomly.\nType any other letter to continue: ')
+                     'irregular verbs randomly.\nType any other letter to continue: ') == 'y'
 
     infinitely = input('Do you want to run the script infinitely?\nType \'y\' to run the script infinitely.\nType any '
-                       'other letter to continue: ')
+                       'other letter to continue: ') == 'y'
 
     while True:
         if randomly:
             irregular_verb, tenses = random.choice(irregular_verbs).values()
         else:
             irregular_verbs.pop()
-            irregular_verb, tenses = irregular_verbs.values()
+            irregular_verb, tenses = irregular_verbs[0].values()
 
         print('Irregular verb: {}'.format(irregular_verb))
         play(irregular_verb)
