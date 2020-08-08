@@ -15,8 +15,18 @@ def main():
     with open('data.json', 'r') as json_file:
         irregular_verbs = json.load(json_file)['irregular_verbs']
 
+    randomly = input('Do you want to learn irregular verbs in English randomly?\nType \'y\' to learn irregular verbs '
+                     'in English randomly.\nType any other letter to continue: ')
+
+    infinitely = input('Do you want to run the script infinitely?\nType \'y\' to run the script infinitely.\nType any '
+                       'other letter to continue: ')
+
     while True:
-        irregular_verb, tenses = random.choice(irregular_verbs).values()
+        if randomly:
+            irregular_verb, tenses = random.choice(irregular_verbs).values()
+        else:
+            irregular_verbs.pop()
+            irregular_verb, tenses = irregular_verbs.values()
 
         print('Irregular verb: {}'.format(irregular_verb))
         play(irregular_verb)
@@ -46,8 +56,9 @@ def main():
 
         play(random.choice(congratulations))
 
-        if input('Do you want to continue?\nType \'n\' to end. Type any other letter to continue: ') == 'n':
-            break
+        if not infinitely:
+            if input('Do you want to continue?\nType \'n\' to end. Type any other letter to continue: ') == 'n':
+                break
 
 
 if __name__ == '__main__':

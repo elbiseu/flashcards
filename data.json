@@ -4,7 +4,11 @@
       "irregular_verb": "be",
       "tenses": [
         "infinitive"
-      ]
+      ],
+      "root": "be",
+      "translations": {
+        "es": ["ser"]
+      }
     },
     {
       "irregular_verb": "was",
