@@ -21,11 +21,14 @@ def main():
     infinitely = input('Do you want to run the script infinitely?\nType \'y\' to run the script infinitely.\nType any '
                        'other letter to continue: ') == 'y'
 
+    i = 0
+
     while True:
         if randomly:
             irregular_verb, tenses = random.choice(irregular_verbs).values()
         else:
-            irregular_verb, tenses = irregular_verbs.pop(0).values()
+            irregular_verb, tenses = irregular_verbs[i].values()
+            i += 1
 
         print('Irregular verb: {}'.format(irregular_verb))
         play(irregular_verb)
