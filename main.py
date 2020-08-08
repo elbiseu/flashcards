@@ -32,10 +32,10 @@ def main():
         for tense in tenses:
             play(tense)
 
-        response = input('Type the word \'{}\': '.format(irregular_verb))
+        response = input('Type the word \'{}\': '.format(irregular_verb)).split()
 
         while irregular_verb not in response:
-            play(random.choice(condolences))
+            response[0] = input('{} \'{}\': '.format(play(random.choice(condolences)), irregular_verb))
 
         if '-d' in response:
             definition(irregular_verb)
