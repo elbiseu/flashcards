@@ -34,14 +34,14 @@ def main():
 
         response = input('Type the word \'{}\': '.format(irregular_verb))
 
+        while irregular_verb not in response:
+            play(random.choice(condolences))
+
         if '-d' in response:
             definition(irregular_verb)
 
         if '-t' in response:
             translate(irregular_verb)
-
-        while irregular_verb not in response:
-            play(random.choice(condolences))
 
         play(random.choice(congratulations))
 
