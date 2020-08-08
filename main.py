@@ -45,7 +45,7 @@ def main():
 
         play(random.choice(congratulations))
 
-        if not input('Do you want to continue?\nIf yes, type \'y\': ') == 'y':
+        if input('Do you want to continue?\nType \'n\' to end. Type any other letter to continue: ') == 'n':
             break
 
 
