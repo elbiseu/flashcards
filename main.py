@@ -25,8 +25,7 @@ def main():
         if randomly:
             irregular_verb, tenses = random.choice(irregular_verbs).values()
         else:
-            irregular_verbs.pop()
-            irregular_verb, tenses = irregular_verbs[0].values()
+            irregular_verb, tenses = irregular_verbs.pop().values()
 
         print('Irregular verb: {}'.format(irregular_verb))
         play(irregular_verb)
