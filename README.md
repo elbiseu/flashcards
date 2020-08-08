@@ -1,4 +1,4 @@
-# Irregular verbs
+# English irregular verbs
 ## Configuration
 Create a virtual environment
 <br>
