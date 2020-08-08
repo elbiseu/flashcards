@@ -35,7 +35,8 @@ def main():
         response = input('Type the word \'{}\': '.format(irregular_verb)).split()
 
         while irregular_verb not in response:
-            response[0] = input('{} \'{}\': '.format(play(random.choice(condolences)), irregular_verb))
+            play(random.choice(condolences))
+            response[0] = input('Sorry! Type the word \'{}\' again: '.format(irregular_verb))
 
         if '-d' in response:
             definition(irregular_verb)
