@@ -15,11 +15,8 @@ def main():
     with open('data.json', 'r') as json_file:
         irregular_verbs = json.load(json_file)['irregular_verbs']
 
-    randomly = input('Do you want to learn the English irregular verbs randomly?\nType \'y\' to learn the English '
-                     'irregular verbs randomly.\nType any other letter to continue: ') == 'y'
-
-    infinitely = input('Do you want to run the script infinitely?\nType \'y\' to run the script infinitely.\nType any '
-                       'other letter to continue: ') == 'y'
+    randomly = input('\nType \'y\' to learn the English irregular verbs randomly.\nType any other letter to continue: ') == 'y'
+    infinitely = input('\nType \'y\' to run the script infinitely.\nType any other letter to continue: ') == 'y'
 
     while True:
         if randomly:
