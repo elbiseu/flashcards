@@ -9,46 +9,41 @@ from translator import translate
 
 
 def main():
-    condolences = ['try again', 'try it one more time']
+    randomly = False
+    infinitely = True
     congratulations = ['approved', 'go ahead', 'nice', 'ok', 'okeydokey', 'very well']
 
     with open('data.json', 'r') as json_file:
         irregular_verbs = json.load(json_file)['irregular_verbs']
 
-    randomly = input('\nType \'y\' to learn the English irregular verbs randomly.\nType any other letter to continue: ') == 'y'
-    infinitely = input('\nType \'y\' to run the script infinitely.\nType any other letter to continue: ') == 'y'
-
     while True:
-        if randomly:
-            irregular_verb, tenses = random.choice(irregular_verbs).values()
-        else:
-            irregular_verb, tenses = irregular_verbs.pop(0).values()
+        irregular_verb = random.choice(irregular_verbs) if randomly else irregular_verbs.pop(0)
+        word = irregular_verb["word"]
+        # root = irregular_verb["root"]
+        tenses = irregular_verb["tenses"]
+        # translations = irregular_verb["translations"]
 
-        print('Irregular verb: {}'.format(irregular_verb))
-        play(irregular_verb)
-
-        print('Spelling: ', end='')
-
-        for letter in irregular_verb:
-            print(letter, end=' ')
-            play(letter)
+        print('Irregular verb: {}'.format(word))
+        play(word)
 
         print('\nTenses: {}'.format(', and '.join(tenses)))
 
         for tense in tenses:
             play(tense)
 
-        response = input('Type the word \'{}\': '.format(irregular_verb)).split()
-
-        while irregular_verb not in response:
-            play(random.choice(condolences))
-            response[0] = input('Sorry! Type the word \'{}\' again: '.format(irregular_verb))
-
-        if '-d' in response:
-            definition(irregular_verb)
-
-        if '-t' in response:
-            translate(irregular_verb)
+        arguments = input('More information about \'{}\'?: '.format(word)).split()
+        for argument in arguments:
+            if '-d' == argument:
+                print('Definition: ', end='')
+                definition(word)
+            elif '-t' == argument:
+                print('Translation: ', end='')
+                translate(word)
+            elif '-s' == argument:
+                print('Spelling: ', end='')
+                for letter in word:
+                    print(letter, end=' ')
+                    play(letter)
 
         play(random.choice(congratulations))
 
