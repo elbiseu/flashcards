@@ -49,7 +49,7 @@
       ]
     },
     {
-     "examples": [
+      "examples": [
         "this soggy match will not light."
       ],
       "root": "light",
@@ -463,64 +463,138 @@
       "tenses": [
         "past participle"
       ],
+      "translations": {
+        "es": []
+      },
       "word": "blown"
     },
     {
-      "word": "read",
+      "examples": [
+        "it's the best novel I've ever read."
+      ],
+      "root": "read",
       "tenses": [
         "infinitive",
         "past simple",
         "past participle"
-      ]
+      ],
+      "translations": {
+        "es": [
+          "leer"
+        ]
+      },
+      "word": "read"
     },
     {
-      "word": "break",
+      "examples": [
+        "break the chocolate into pieces."
+      ],
+      "root": "break",
       "tenses": [
         "infinitive"
-      ]
+      ],
+      "translations": {
+        "es": [
+          "romper"
+        ]
+      },
+      "word": "break"
     },
     {
-      "word": "broke",
+      "examples": [
+        "many farmers went broke."
+      ],
+      "root": "break",
       "tenses": [
         "past simple"
-      ]
+      ],
+      "translations": {
+        "es": []
+      },
+      "word": "broke"
     },
     {
-      "word": "broken",
+      "examples": [
+        "windows in the street were broken by the blast."
+      ],
+      "root": "brake",
       "tenses": [
         "past participle"
-      ]
+      ],
+      "translations": {
+        "es": []
+      },
+      "word": "broken"
     },
     {
-      "word": "ride",
+      "examples": [
+        "Diana went to watch him ride his horse."
+      ],
+      "root": "ride",
       "tenses": [
         "infinitive"
-      ]
+      ],
+      "translations": {
+        "es": [
+          "cabalgar",
+          "montar",
+          "viajar"
+        ]
+      },
+      "word": "ride"
     },
     {
-      "word": "rode",
+      "examples": [
+        "we rode on horseback."
+      ],
+      "root": "ride",
       "tenses": [
         "past simple"
-      ]
+      ],
+      "translations": {
+        "es": []
+      },
+      "word": "rode"
     },
     {
-      "word": "ridden",
+      "examples": [
+        "I haven't ridden much since the accident."
+      ],
+      "root": "ride",
       "tenses": [
         "past participle"
-      ]
+      ],
+      "translations": {
+        "es": []
+      },
+      "word": "ridden"
     },
     {
-      "word": "bring",
+      "examples": [
+        "what brings you here?"
+      ],
+      "root": "ride",
       "tenses": [
         "infinitive"
-      ]
+      ],
+      "translations": {
+        "es": []
+      },
+      "word": "bring"
     },
     {
-      "word": "brought",
+      "examples": [
+        "Liz brought her a glass of water."
+      ],
+      "root": "bring",
       "tenses": [
         "past simple",
         "past participle"
-      ]
+      ],
+      "translations": {
+        "es": []
+      },
+      "word": "brought"
     },
     {
       "word": "ring",
