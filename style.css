@@ -1,19 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@700&display=swap');
 
 body {
-    font-family: 'Merriweather', serif;
+    font-family: 'IBM Plex Sans', sans-serif;
     margin: 20pt auto;
-    width: 500pt;
+    width: 700pt;
 }
 
 h2 {
     font-size: 20pt;
 }
 
-.container {
+.classification-container {
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: row wrap;
     justify-content: space-around;
+}
+
+.classification {
+    margin-left: 10pt;
+    width: 200pt;
 }
 
 .flashcard-container {
@@ -21,26 +26,30 @@ h2 {
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
+    margin-bottom: 30pt;
     min-height: 50pt;
     padding: 10pt;
+}
+
+.classification-flashcard-container {
+    border-radius: 3pt;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
     margin-bottom: 30pt;
+    min-height: 50pt;
+    padding-bottom: 30pt;
 }
 
 .flashcard {
-    text-align: center;
-    color: white;
-    background-color: black;
-    border-color: white;
-    border-radius: 6pt;
+    background-color: white;
+    border-color: black;
+    border-radius: 5pt;
     border-style: solid;
+    color: black;
+    font-size: 12pt;
     font-weight: normal;
     margin: 5pt;
     padding: 10pt;
-    font-size: 12pt;
-}
-
-.flashcard:hover {
-    border-color: black;
-    color: black;
-    background-color: white;
+    text-align: center;
 }

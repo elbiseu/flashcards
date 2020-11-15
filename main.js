@@ -38,9 +38,9 @@ for (let irregularVerb of listOfIrregularVerbs) {
         const pronunciation = new Audio(src);
         const promise = pronunciation.play();
         if (promise !== null) {
-          promise.then(function() {
+          promise.then(function () {
             console.log("Automatic playback started!");
-          }).catch(function(error) {
+          }).catch(function (error) {
             console.log("Automatic playback failed!");
             console.log(error);
           });
@@ -60,9 +60,12 @@ for (let classification of ["infinitive", "past_simple", "past_participle", "fla
   const container = document.getElementById(id);
   container.ondragover = function (event) {
     event.preventDefault();
-    container.style.backgroundColor = "pink";
+    container.style.backgroundColor = "lightgreen";
   };
   container.ondragleave = function () {
+    container.style.removeProperty("background-color");
+  };
+  container.ondragend = function () {
     container.style.removeProperty("background-color");
   };
   container.ondrop = function (event) {
