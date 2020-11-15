@@ -375,6 +375,17 @@ for (let identifier of identifiers) {
   flashcard.className = "flashcard";
   flashcard.draggable = true;
   flashcard.innerText = irregularVerb;
+  flashcard.classifications = [];
+  flashcard.classifications.push("flashcard");
+  if (infinitive.includes(irregularVerb)) {
+    flashcard.classifications.push("infinitive");
+  }
+  if (pastSimple.includes(irregularVerb)) {
+    flashcard.classifications.push("past_simple");
+  }
+  if (pastParticiple.includes(irregularVerb)) {
+    flashcard.classifications.push("past_participle");
+  }
   flashcard.onclick = function () {
     const src = "./resources/" + irregularVerb + ".wav";
     const pronunciation = new Audio(src);
@@ -395,7 +406,7 @@ for (let identifier of identifiers) {
   element.appendChild(flashcard);
 }
 
-for (let classification of ["infinitive", "past_simple", "past_participle", "flashcard"]) {
+for (let classification of ["flashcard", "infinitive", "past_simple", "past_participle"]) {
   const id = classification + "_container";
   const container = document.getElementById(id);
   container.ondragend = function () {
@@ -412,6 +423,15 @@ for (let classification of ["infinitive", "past_simple", "past_participle", "fla
     const data = event.dataTransfer.getData("text/plain");
     const element = document.getElementById(data);
     const target = event.target;
+    if (element.classifications.includes(classification)) {
+      element.style.backgroundColor = "white";
+      element.style.borderColor = "black";
+      element.style.color = "black";
+    } else {
+      element.style.backgroundColor = "red";
+      element.style.borderColor = "red";
+      element.style.color = "white";
+    }
     target.appendChild(element);
     container.style.removeProperty("background-color");
   };

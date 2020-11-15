@@ -30,7 +30,7 @@ h2 {
     font-size: 12pt;
     font-weight: normal;
     margin: 5pt;
-    padding: 10pt;
+    padding: 5pt;
     text-align: center;
 }
 
@@ -50,6 +50,5 @@ h2 {
     flex-flow: row wrap;
     justify-content: flex-start;
     margin-bottom: 30pt;
-    min-height: 50pt;
     padding-bottom: 50pt;
 }
