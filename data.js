@@ -1,4 +1,4 @@
-let infinitive = [
+export let infinitive = [
   "be",
   "beat",
   "become",
@@ -117,7 +117,7 @@ let infinitive = [
   "write",
 ];
 
-let pastSimple = [
+export let pastSimple = [
   "was/were",
   "beat",
   "became",
@@ -236,7 +236,7 @@ let pastSimple = [
   "wrote",
 ];
 
-let pastParticiple = [
+export let pastParticiple = [
   "been",
   "beaten",
   "become",
