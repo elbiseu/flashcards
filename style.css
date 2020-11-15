@@ -10,15 +10,28 @@ h2 {
     font-size: 20pt;
 }
 
+.classification {
+    margin-left: 10pt;
+    width: 200pt;
+}
+
 .classification-container {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
 }
 
-.classification {
-    margin-left: 10pt;
-    width: 200pt;
+.flashcard {
+    background-color: white;
+    border-color: black;
+    border-radius: 5pt;
+    border-style: solid;
+    color: black;
+    font-size: 12pt;
+    font-weight: normal;
+    margin: 5pt;
+    padding: 10pt;
+    text-align: center;
 }
 
 .flashcard-container {
@@ -39,17 +52,4 @@ h2 {
     margin-bottom: 30pt;
     min-height: 50pt;
     padding-bottom: 30pt;
-}
-
-.flashcard {
-    background-color: white;
-    border-color: black;
-    border-radius: 5pt;
-    border-style: solid;
-    color: black;
-    font-size: 12pt;
-    font-weight: normal;
-    margin: 5pt;
-    padding: 10pt;
-    text-align: center;
 }

@@ -58,15 +58,15 @@ for (let irregularVerb of listOfIrregularVerbs) {
 for (let classification of ["infinitive", "past_simple", "past_participle", "flashcard"]) {
   const id = classification + "_container";
   const container = document.getElementById(id);
-  container.ondragover = function (event) {
-    event.preventDefault();
-    container.style.backgroundColor = "lightgreen";
+  container.ondragend = function () {
+    container.style.removeProperty("background-color");
   };
   container.ondragleave = function () {
     container.style.removeProperty("background-color");
   };
-  container.ondragend = function () {
-    container.style.removeProperty("background-color");
+  container.ondragover = function (event) {
+    event.preventDefault();
+    container.style.backgroundColor = "lightgreen";
   };
   container.ondrop = function (event) {
     const data = event.dataTransfer.getData("text/plain");
