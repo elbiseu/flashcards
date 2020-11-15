@@ -423,16 +423,18 @@ for (let classification of ["flashcard", "infinitive", "past_simple", "past_part
     const data = event.dataTransfer.getData("text/plain");
     const element = document.getElementById(data);
     const target = event.target;
-    if (element.classifications.includes(classification)) {
-      element.style.backgroundColor = "white";
-      element.style.borderColor = "black";
-      element.style.color = "black";
-    } else {
-      element.style.backgroundColor = "red";
-      element.style.borderColor = "red";
-      element.style.color = "white";
+    if (target.className !== "flashcard") {
+      if (element.classifications.includes(classification)) {
+        element.style.backgroundColor = "white";
+        element.style.borderColor = "black";
+        element.style.color = "black";
+      } else {
+        element.style.backgroundColor = "red";
+        element.style.borderColor = "red";
+        element.style.color = "white";
+      }
+      target.appendChild(element);
+      container.style.removeProperty("background-color");
     }
-    target.appendChild(element);
-    container.style.removeProperty("background-color");
   };
 }
