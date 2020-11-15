@@ -25,23 +25,51 @@ let listOfIrregularVerbs = [
   },
 ];
 
-/*
-function getRandomIrregularVerb() {
-  const random = Math.random() * listOfIrregularVerbs.length;
-  const floor = Math.floor(random);
-  return listOfIrregularVerbs[floor]
-}
-*/
-
 for (let irregularVerb of listOfIrregularVerbs) {
   for (let key of Object.keys(irregularVerb)) {
     if (key !== "id") {
-      let flashcard = document.createElement("div");
-      flashcard.id = irregularVerb["id"];
+      const flashcard = document.createElement("div");
+      flashcard.id = irregularVerb["id"] + key;
       flashcard.className = "flashcard";
       flashcard.draggable = true;
       flashcard.innerText = irregularVerb[key];
-      document.getElementById("flashcard_container").appendChild(flashcard);
+      flashcard.onclick = function () {
+        const src = "./resources/" + irregularVerb[key] + ".wav";
+        const pronunciation = new Audio(src);
+        const promise = pronunciation.play();
+        if (promise !== null) {
+          promise.then(function() {
+            console.log("Automatic playback started!");
+          }).catch(function(error) {
+            console.log("Automatic playback failed!");
+            console.log(error);
+          });
+        }
+      };
+      flashcard.ondragstart = function (event) {
+        event.dataTransfer.setData("text/plain", this.id);
+      };
+      const element = document.getElementById("flashcard_container");
+      element.appendChild(flashcard);
     }
   }
+}
+
+for (let classification of ["infinitive", "past_simple", "past_participle", "flashcard"]) {
+  const id = classification + "_container";
+  const container = document.getElementById(id);
+  container.ondragover = function (event) {
+    event.preventDefault();
+    container.style.backgroundColor = "pink";
+  };
+  container.ondragleave = function () {
+    container.style.removeProperty("background-color");
+  };
+  container.ondrop = function (event) {
+    const data = event.dataTransfer.getData("text/plain");
+    const element = document.getElementById(data);
+    const target = event.target;
+    target.appendChild(element);
+    container.style.removeProperty("background-color");
+  };
 }
