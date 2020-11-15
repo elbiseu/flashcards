@@ -69,11 +69,26 @@ for (let classification of ["flashcard", "infinitive", "past_simple", "past_part
     const element = document.getElementById(data);
     const target = event.target;
     if (target.className !== "flashcard") {
-      if (element.classifications.includes(classification)) {
+      if (target.id === "flashcard_container") {
         element.style.backgroundColor = "white";
-        element.style.borderColor = "dodgerblue";
-        element.style.color = "dodgerblue";
-        element.draggable = false;
+        element.style.borderColor = "black";
+        element.style.color = "black";
+      } else if (element.classifications.includes(classification)) {
+        let isDuplicate = false;
+        for (let childNode of target.childNodes) {
+          if (childNode.innerText === element.innerText) {
+            isDuplicate = true;
+          }
+        }
+        element.style.backgroundColor = "white";
+        if (isDuplicate) {
+          element.style.borderColor = "darkorange";
+          element.style.color = "darkorange";
+        } else {
+          element.style.borderColor = "dodgerblue";
+          element.style.color = "dodgerblue";
+          element.draggable = false;
+        }
       } else {
         element.style.backgroundColor = "red";
         element.style.borderColor = "red";
