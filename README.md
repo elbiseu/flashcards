@@ -6,4 +6,4 @@ Learning irregular verbs is boring, right? No more!
 * Click on the flash card to hear the pronunciation of the irregular verb.
 
 ## Hurry up!
-[Play here!](https://erubisu.github.io/english-irregular-verbs/)
+[Play here!](https://elbiseu.github.io/english-irregular-verbs/)
