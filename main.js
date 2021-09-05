@@ -1,101 +1,94 @@
-import {infinitive, pastSimple, pastParticiple} from "./data.js";
+import {infinitive, pastSimple, pastParticiple} from './data.js';
 
-let irregularVerbs = infinitive.concat(pastSimple);
-irregularVerbs = irregularVerbs.concat(pastParticiple);
-let identifiers = [];
-console.log(identifiers.length);
+let irregularVerbs = infinitive.concat(pastSimple)
+    .concat(pastParticiple);
 
-while (identifiers.length !== irregularVerbs.length) {
-  const random = Math.random() * irregularVerbs.length;
-  const floor = Math.floor(random);
-  if (!identifiers.includes(floor)) {
-    identifiers.push(floor);
-  }
+const flashcardContainer = document.getElementById('flashcard_container');
+const infinitivePod = 'infinitive_pod';
+const pastSimplePod = 'past_simple_pod';
+const pastParticiplePod = 'past_participle_pod';
+
+function pickUpIrregularVerb() {
+    return irregularVerbs.pop()
 }
 
-for (let identifier of identifiers) {
-  let irregularVerb = irregularVerbs[identifier];
-  const flashcard = document.createElement("div");
-  flashcard.id = identifier;
-  flashcard.className = "flashcard";
-  flashcard.draggable = true;
-  flashcard.innerText = irregularVerb;
-  flashcard.classifications = [];
-  flashcard.classifications.push("flashcard");
-  if (infinitive.includes(irregularVerb)) {
-    flashcard.classifications.push("infinitive");
-  }
-  if (pastSimple.includes(irregularVerb)) {
-    flashcard.classifications.push("past_simple");
-  }
-  if (pastParticiple.includes(irregularVerb)) {
-    flashcard.classifications.push("past_participle");
-  }
-  flashcard.onclick = function () {
-    const src = "./resources/" + irregularVerb + ".wav";
-    const pronunciation = new Audio(src);
-    const promise = pronunciation.play();
-    if (promise !== null) {
-      promise.then(function () {
-        console.log("Automatic playback started!");
-      }).catch(function (error) {
-        console.log("Automatic playback failed!");
-        console.log(error);
-      });
-    }
-  };
-  flashcard.ondragstart = function (event) {
-    event.dataTransfer.setData("text/plain", this.id);
-  };
-  const element = document.getElementById("flashcard_container");
-  element.appendChild(flashcard);
-}
+function buildPod(elementId, irregularVerbs) {
+    const pod = document.getElementById(elementId);
 
-for (let classification of ["flashcard", "infinitive", "past_simple", "past_participle"]) {
-  const id = classification + "_container";
-  const container = document.getElementById(id);
-  container.ondragend = function () {
-    container.style.removeProperty("background-color");
-  };
-  container.ondragleave = function () {
-    container.style.removeProperty("background-color");
-  };
-  container.ondragover = function (event) {
-    event.preventDefault();
-    container.style.backgroundColor = "lightgreen";
-  };
-  container.ondrop = function (event) {
-    const data = event.dataTransfer.getData("text/plain");
-    const element = document.getElementById(data);
-    const target = event.target;
-    if (target.className !== "flashcard") {
-      if (target.id === "flashcard_container") {
-        element.style.backgroundColor = "white";
-        element.style.borderColor = "black";
-        element.style.color = "black";
-      } else if (element.classifications.includes(classification)) {
-        let isDuplicate = false;
-        for (let childNode of target.childNodes) {
-          if (childNode.innerText === element.innerText) {
-            isDuplicate = true;
-          }
+    pod.addEventListener('dragover', function (dragEvent) {
+        if (pod.className.endsWith('pod--drag-over') === false) {
+            pod.className = 'pod pod--drag-over';
         }
-        element.style.backgroundColor = "white";
-        if (isDuplicate) {
-          element.style.borderColor = "darkorange";
-          element.style.color = "darkorange";
+    });
+
+    pod.addEventListener('dragleave', function (dragEvent) {
+        if (pod.className.endsWith('pod--drag-over') !== false) {
+            pod.className = 'pod';
+        }
+    });
+
+    pod.addEventListener('dragover', function (dragEvent) {
+        dragEvent.preventDefault();
+    });
+
+    pod.addEventListener('drop', function (dragEvent) {
+        dragEvent.preventDefault();
+
+        let flashcardId = dragEvent.dataTransfer.getData('text/plain');
+        let flashcard = document.getElementById(flashcardId);
+
+        pod.className = 'pod';
+
+        if (irregularVerbs.includes(flashcard.innerText)) {
+            flashcard.className = 'flashcard flashcard--fade-out flashcard--success';
+            flashcard.draggable = false;
+            flashcard.id = undefined;
+
+            setTimeout(function () {
+                flashcard.remove();
+            }, 6000);
+
+            buildFlashcard();
         } else {
-          element.style.borderColor = "dodgerblue";
-          element.style.color = "dodgerblue";
-          element.draggable = false;
+            flashcard.className = 'flashcard flashcard--mistake';
         }
-      } else {
-        element.style.backgroundColor = "red";
-        element.style.borderColor = "red";
-        element.style.color = "white";
-      }
-      target.appendChild(element);
-      container.style.removeProperty("background-color");
-    }
-  };
+
+        pod.appendChild(flashcard);
+    });
 }
+
+function buildFlashcard() {
+    const irregularVerb = pickUpIrregularVerb();
+    const flashcard = document.createElement('div');
+
+    flashcard.draggable = true;
+    flashcard.className = 'flashcard flashcard--fade-in flashcard--plain';
+    flashcard.id = 'flashcard';
+    flashcard.innerHTML = `<span>${irregularVerb}</span>`;
+
+    flashcardContainer.appendChild(flashcard);
+
+    flashcard.addEventListener('dragstart', function (dragEvent) {
+        dragEvent.dataTransfer.setData('text/plain', flashcard.id);
+    });
+
+    flashcard.addEventListener('click', function (mouseEvent) {
+        mouseEvent.preventDefault();
+
+        const pronunciation = new Audio();
+        pronunciation.src = './resources/' + irregularVerb + '.wav';
+        const promise = pronunciation.play();
+
+        promise.then(function () {
+            console.log("Automatic playback started!");
+        }).catch(function (error) {
+            console.log("Automatic playback failed!");
+            console.log(error);
+        });
+    });
+}
+
+buildFlashcard();
+buildPod(infinitivePod, infinitive);
+buildPod(pastSimplePod, pastSimple);
+buildPod(pastParticiplePod, pastParticiple);
