@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@700&display=swap');
+
+body {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+p {
+    font-family: 'IBM Plex Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: grid;
+    grid-template-areas: "flashcard" "classification";
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    width: 600px;
+}
+
+.classification-container {
+    display: flex;
+    flex-flow: row wrap;
+    grid-area: classification;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.classification {
+    background-color: mediumpurple;
+    border-radius: 5px;
+    border-style: none;
+    color: white;
+    font-size: 24px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.classification:hover {
+    background-color: orchid;
+}
+
+.flashcard-container {
+    display: flex;
+    flex-flow: column wrap;
+    grid-area: flashcard;
+    justify-content: space-around;
+}
+
+.flashcard {
+    border-radius: 5px;
+    cursor: default;
+    font-size: 38px;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.flashcard--plain {
+    background-color: dodgerblue;
+    color: white;
+}
+
+.flashcard--success {
+    background-color: lightgreen;
+    color: white;
+}
+
+.flashcard--warning {
+    background-color: orange;
+    color: white;
+}
+
+.flashcard--mistake {
+    background-color: red;
+    color: white;
+}
+
+.play {
+    background-color: dodgerblue;
+    border-radius: 5px;
+    border-style: none;
+    color: white;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 24px;
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+        grid-template-areas: "flashcard" "classification";
+    }
+
+    .classification-container {
+        display: flex;
+        flex-flow: column wrap;
+        grid-area: classification;
+        justify-content: center;
+    }
+}
+
