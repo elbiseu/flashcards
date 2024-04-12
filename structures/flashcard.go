@@ -1,4 +1,4 @@
-package flashcard
+package structures
 
 const (
 	IrregularVerb Type = "Irregular Verb"

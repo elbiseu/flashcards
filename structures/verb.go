@@ -1,4 +1,4 @@
-package verb
+package structures
 
 import (
 	"container/list"
