@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"github.com/elbiseu/flashcards/arangodb"
 	"github.com/elbiseu/flashcards/interfaces"
+	"github.com/elbiseu/flashcards/responses"
 	"github.com/elbiseu/flashcards/structures"
 	"log"
 	"net/http"
@@ -20,31 +21,24 @@ var (
 	store               interfaces.Store
 )
 
-type CustomRes struct {
-	Status  int         `json:"status"`
-	Message string      `json:"message"`
-	Data    interface{} `json:"data,omitempty"`
-}
-
-func sendResponse(w http.ResponseWriter, status int, message string, data interface{}) {
-	res := CustomRes{
-		Status:  status,
-		Message: message,
-		Data:    data,
+func sendResponse(w http.ResponseWriter, data any) {
+	switch data.(type) {
+	case interfaces.APIError:
+		body := map[string]interface{}{
+			"error_code": "",
+			"message":    "",
+		}
+		// w.WriteHeader()
+		w.Header().Set("Content-Type", "application/json")
+		_ = json.NewEncoder(w).Encode(body.(responses.APIError))
 	}
-
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(status)
-	// TODO.
-	_ = json.NewEncoder(w).Encode(res)
 }
 
 func middleware(next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		defer func() {
 			if err := recover(); err != nil {
-				log.Printf("Recovered from panic: %v", err)
-				http.Error(w, "", http.StatusInternalServerError)
+				sendResponse(w, responses.InternalServerError)
 			}
 		}()
 		next(w, r)
@@ -52,6 +46,7 @@ func middleware(next http.HandlerFunc) http.HandlerFunc {
 }
 
 func init() {
+	dictionary["10075"] = http.StatusOK
 	arangoDB, err := arangodb.NewArangoDB(arangoDBUsername, arangoDBPassword, []string{arangoDBEndpoint})
 	if err != nil {
 		return
@@ -95,7 +90,7 @@ func main() {
 				log.Println(err)
 				return
 			}
-			sendResponse(responseWriter, http.StatusOK, "OK", v)
+			sendResponse(responseWriter, http.StatusOK, "OK", v, false)
 		}
 	}))
 	for e := structures.List.Front(); e != nil; e = e.Next() {
