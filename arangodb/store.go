@@ -3,7 +3,7 @@ package arangodb
 import (
 	"context"
 	"github.com/arangodb/go-driver"
-	"reflect"
+	"github.com/elbiseu/flashcards/interfaces"
 	"strings"
 )
 
@@ -17,7 +17,7 @@ func NewOperation(database driver.Database) *Operator {
 	}
 }
 
-func (o *Operator) Get(ctx context.Context, key string, document any) error {
+func (o *Operator) Get(ctx context.Context, key string, document interfaces.Gatherer) error {
 	collection, err := o.getCollection(ctx, document)
 	if err != nil {
 		return err
@@ -26,7 +26,7 @@ func (o *Operator) Get(ctx context.Context, key string, document any) error {
 	return err
 }
 
-func (o *Operator) Save(ctx context.Context, document any) error {
+func (o *Operator) Save(ctx context.Context, document interfaces.Gatherer) error {
 	collection, err := o.getCollection(ctx, document)
 	if err != nil {
 		return err
@@ -35,12 +35,7 @@ func (o *Operator) Save(ctx context.Context, document any) error {
 	return err
 }
 
-func (o *Operator) getCollection(ctx context.Context, document any) (driver.Collection, error) {
-	collectionName := o.getCollectionName(document)
-	collection, err := o.database.Collection(ctx, strings.ToLower(collectionName))
+func (o *Operator) getCollection(ctx context.Context, document interfaces.Gatherer) (driver.Collection, error) {
+	collection, err := o.database.Collection(ctx, strings.ToLower(document.Gathering()))
 	return collection, err
-}
-
-func (o *Operator) getCollectionName(document any) string {
-	return reflect.TypeOf(document).Name()
 }

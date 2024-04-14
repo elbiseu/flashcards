@@ -7,7 +7,7 @@ type APIError struct {
 	message   string
 }
 
-func (a *APIError) JSON() ([]byte, error) {
+func (a *APIError) Body() ([]byte, error) {
 	data := map[string]interface{}{
 		"error_code": a.errorCode,
 		"message":    a.message,

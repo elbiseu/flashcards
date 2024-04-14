@@ -2,16 +2,24 @@ package interfaces
 
 import (
 	"context"
+	"github.com/elbiseu/flashcards/structures"
 )
 
-type APILayer interface {
-	JSON() ([]byte, error)
+type APIModifier interface {
+	Apply() APIModifier
 }
 
-type APIError interface {
+type APITransfer interface {
+	ContentType() structures.ContentType
+	SharedFields() structures.SharedFields
 }
 
-type Store interface {
-	Get(ctx context.Context, key string, item any) error
-	Save(ctx context.Context, item any) error
+type Gatherer interface {
+	Gathering() string
+	Identify() string
+}
+
+type Storage interface {
+	Get(ctx context.Context, gatherer Gatherer) error
+	Save(ctx context.Context, gatherer Gatherer) error
 }
