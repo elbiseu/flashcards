@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"github.com/elbiseu/flashcards/arangodb"
 	"github.com/elbiseu/flashcards/interfaces"
@@ -21,13 +22,13 @@ var (
 	store               interfaces.Store
 )
 
-func sendResponse(w http.ResponseWriter, payload interfaces.APILayer) error {
-	w.Header().Set("Content-Type", "application/json")
+func sendResponse(writer http.ResponseWriter, payload interfaces.APILayer) error {
+	writer.Header().Set("Content-Type", "application/json")
 	payloadJSON, err := payload.JSON()
 	if err != nil {
 		return err
 	}
-	_, err = w.Write(payloadJSON)
+	_, err = writer.Write(payloadJSON)
 	return err
 }
 
@@ -35,7 +36,9 @@ func middleware(next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		defer func() {
 			if err := recover(); err != nil {
-				_ = sendResponse(w, responses.InternalServerError)
+				if err = sendResponse(w, responses.InternalServerError); err != nil {
+					log.Println(err)
+				}
 			}
 		}()
 		next(w, r)
@@ -62,12 +65,9 @@ func main() {
 	serveMux.HandleFunc("/flashcard", middleware(func(responseWriter http.ResponseWriter, request *http.Request) {
 		switch request.Method {
 		case http.MethodPost:
-			verb := transfers.Verb{
-				Value:          "",
-				Type:           "",
-				BaseForm:       "",
-				PastSimple:     "",
-				PastParticiple: "",
+			var verb transfers.Verb
+			if err := json.NewDecoder(request.Body).Decode(&verb); err != nil {
+				_ = sendResponse(responseWriter, responses.InternalServerError)
 			}
 			flashcard := structures.Flashcard{
 				Value: verb.Value,
@@ -100,7 +100,7 @@ func main() {
 				PastSimple:     "",
 				PastParticiple: "",
 			}
-			sendResponse(responseWriter, &verb)
+			_ = sendResponse(responseWriter, &verb)
 		}
 	}))
 	for e := structures.List.Front(); e != nil; e = e.Next() {
