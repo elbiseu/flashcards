@@ -2,12 +2,12 @@ package main
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"github.com/elbiseu/flashcards/arangodb"
 	"github.com/elbiseu/flashcards/interfaces"
 	"github.com/elbiseu/flashcards/responses"
 	"github.com/elbiseu/flashcards/structures"
+	"github.com/elbiseu/flashcards/transfers"
 	"log"
 	"net/http"
 	"os"
@@ -21,24 +21,21 @@ var (
 	store               interfaces.Store
 )
 
-func sendResponse(w http.ResponseWriter, data any) {
-	switch data.(type) {
-	case interfaces.APIError:
-		body := map[string]interface{}{
-			"error_code": "",
-			"message":    "",
-		}
-		// w.WriteHeader()
-		w.Header().Set("Content-Type", "application/json")
-		_ = json.NewEncoder(w).Encode(body.(responses.APIError))
+func sendResponse(w http.ResponseWriter, payload interfaces.APILayer) error {
+	w.Header().Set("Content-Type", "application/json")
+	payloadJSON, err := payload.JSON()
+	if err != nil {
+		return err
 	}
+	_, err = w.Write(payloadJSON)
+	return err
 }
 
 func middleware(next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		defer func() {
 			if err := recover(); err != nil {
-				sendResponse(w, responses.InternalServerError)
+				_ = sendResponse(w, responses.InternalServerError)
 			}
 		}()
 		next(w, r)
@@ -46,7 +43,6 @@ func middleware(next http.HandlerFunc) http.HandlerFunc {
 }
 
 func init() {
-	dictionary["10075"] = http.StatusOK
 	arangoDB, err := arangodb.NewArangoDB(arangoDBUsername, arangoDBPassword, []string{arangoDBEndpoint})
 	if err != nil {
 		return
@@ -66,16 +62,23 @@ func main() {
 	serveMux.HandleFunc("/flashcard", middleware(func(responseWriter http.ResponseWriter, request *http.Request) {
 		switch request.Method {
 		case http.MethodPost:
-			v := structures.Flashcard{
-				Value: "",
+			verb := transfers.Verb{
+				Value:          "",
+				Type:           "",
+				BaseForm:       "",
+				PastSimple:     "",
+				PastParticiple: "",
+			}
+			flashcard := structures.Flashcard{
+				Value: verb.Value,
 				Type:  structures.IrregularVerb,
 				Meta: structures.Meta{
-					BaseForm:       "",
-					PastSimple:     "",
-					PastParticiple: "",
+					BaseForm:       verb.BaseForm,
+					PastSimple:     verb.PastSimple,
+					PastParticiple: verb.PastParticiple,
 				},
 			}
-			if err := store.Save(request.Context(), v); err != nil {
+			if err := store.Save(request.Context(), flashcard); err != nil {
 				log.Println(err)
 				return
 			}
@@ -85,12 +88,19 @@ func main() {
 		switch request.Method {
 		case http.MethodGet:
 			key := request.PathValue("key")
-			var v structures.Flashcard
-			if err := store.Get(request.Context(), key, v); err != nil {
+			var flashcard structures.Flashcard
+			if err := store.Get(request.Context(), key, flashcard); err != nil {
 				log.Println(err)
 				return
 			}
-			sendResponse(responseWriter, http.StatusOK, "OK", v, false)
+			verb := transfers.Verb{
+				Value:          "",
+				Type:           "",
+				BaseForm:       "",
+				PastSimple:     "",
+				PastParticiple: "",
+			}
+			sendResponse(responseWriter, &verb)
 		}
 	}))
 	for e := structures.List.Front(); e != nil; e = e.Next() {
