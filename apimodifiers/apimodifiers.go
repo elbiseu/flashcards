@@ -1,25 +1,24 @@
 package apimodifiers
 
 import (
-	"github.com/elbiseu/flashcards/interfaces"
 	"github.com/elbiseu/flashcards/structures"
 )
 
 type APIModifier struct {
-	apiTransfer interfaces.APITransfer
+	apiTransfer any
 	modifiers   []structures.ModifyingFunc
 }
 
-func NewAPIModifier(apiTransfer interfaces.APITransfer) *APIModifier {
+func NewAPIModifier(apiTransfer any) *APIModifier {
 	return &APIModifier{apiTransfer: apiTransfer}
 }
 
-func (a *APIModifier) Add(modifiers ...structures.ModifyingFunc) *APIModifier {
-	a.modifiers = append(a.modifiers, modifiers...)
+func (a *APIModifier) Add(modifiers structures.ModifyingFunc) *APIModifier {
+	a.modifiers = append(a.modifiers, modifiers)
 	return a
 }
 
-func (a *APIModifier) Apply() *interfaces.APITransfer {
+func (a *APIModifier) Apply() *any {
 	for _, modifier := range a.modifiers {
 		modifier(&a.apiTransfer)
 	}

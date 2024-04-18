@@ -1,7 +1,5 @@
 package structures
 
-import "github.com/elbiseu/flashcards/interfaces"
-
 const (
 	IrregularVerb FlashcardType = "Irregular Verb"
 	JSON          ContentType   = "JSON"
@@ -11,7 +9,8 @@ type ContentType string
 type FlashcardType string
 type SharedFields map[string]any
 type BBody []byte
-type ModifyingFunc func(transfer *interfaces.APITransfer)
+type ModifyingFunc func(any2 any)
+type ModProps map[string]any
 
 type Flashcard struct {
 	Key   string

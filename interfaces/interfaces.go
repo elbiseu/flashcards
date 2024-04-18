@@ -11,7 +11,7 @@ type APIModifier interface {
 
 type APITransfer interface {
 	ContentType() structures.ContentType
-	SharedFields() structures.SharedFields
+	Marshalled() []byte
 }
 
 type Gatherer interface {
@@ -20,6 +20,6 @@ type Gatherer interface {
 }
 
 type Storage interface {
-	Get(ctx context.Context, gatherer Gatherer) error
+	Get(ctx context.Context, key string, gatherer Gatherer) error
 	Save(ctx context.Context, gatherer Gatherer) error
 }

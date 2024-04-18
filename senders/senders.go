@@ -2,6 +2,7 @@ package senders
 
 import (
 	"github.com/elbiseu/flashcards/interfaces"
+	"log"
 	"net/http"
 )
 
@@ -15,9 +16,7 @@ func NewAPISender(responseWriter http.ResponseWriter) *APISender {
 
 func (s APISender) SendResponse(apiSender interfaces.APITransfer) {
 	s.responseWriter.Header().Set("Content-Type", string(apiSender.ContentType()))
-	/*
-		if _, err := s.responseWriter.Write(apiSender); err != nil {
-			log.Println(err)
-		}
-	*/
+	if _, err := s.responseWriter.Write(apiSender.Marshalled()); err != nil {
+		log.Println(err)
+	}
 }

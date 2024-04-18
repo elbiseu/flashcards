@@ -5,6 +5,8 @@ import (
 	"github.com/arangodb/go-driver/http"
 )
 
+type Connection struct{}
+
 type ArangoDB struct {
 	Client    driver.Client
 	endpoints []string
