@@ -2,7 +2,9 @@ package handlers
 
 import (
 	"encoding/json"
-	"github.com/elbiseu/flashcards/apitransfers"
+	"github.com/elbiseu/flashcards/dtos"
+	"github.com/elbiseu/flashcards/fixedvalues"
+	"github.com/elbiseu/flashcards/formatters"
 	"github.com/elbiseu/flashcards/senders"
 	"github.com/elbiseu/flashcards/store"
 	"github.com/elbiseu/flashcards/structures"
@@ -17,43 +19,47 @@ func Flashcard(responseWriter http.ResponseWriter, request *http.Request) {
 	case http.MethodPost:
 		flashcardPostHandler(responseWriter, request)
 	default:
-		http.Error(responseWriter, "", http.StatusBadRequest)
+		// TODO: Send response.
 	}
 }
 
 func flashcardGetHandler(responseWriter http.ResponseWriter, request *http.Request) {
 	key := request.PathValue("key")
-	var verbFlashcard structures.Flashcard
-	if err := store.Store.Get(request.Context(), key, &verbFlashcard); err != nil {
-		log.Println(err)
-	}
-	meta, ok := verbFlashcard.Meta.(structures.VerbFlashcardMeta)
-	if !ok {
+	var flashcard structures.Flashcard
+	if err := store.Store.Get(request.Context(), key, &flashcard); err != nil {
+		// TODO: Send response.
 		return
 	}
-	transfer := apitransfers.Flashcard{
+	meta, ok := flashcard.Meta.(structures.VerbMeta)
+	if !ok {
+		// TODO: Send response.
+		return
+	}
+	dto := dtos.Flashcard{
 		BaseForm:       meta.BaseForm,
-		Key:            verbFlashcard.Key,
+		Key:            flashcard.Key,
 		PastParticiple: meta.PastParticiple,
 		PastSimple:     meta.PastSimple,
-		Type:           string(verbFlashcard.Type),
-		Value:          verbFlashcard.Value,
+		Type:           flashcard.Type.String(),
+		Value:          flashcard.Value,
 	}
-	senders.NewAPISender(responseWriter).SendResponse(&transfer)
+	senders.NewDefaultSender(responseWriter).SendResponse(&dto, formatters.JSON)
 }
 
 func flashcardPostHandler(responseWriter http.ResponseWriter, request *http.Request) {
-	var verb apitransfers.Flashcard
-	if err := json.NewDecoder(request.Body).Decode(&verb); err != nil {
-		// TODO: Send errors.
-		// senders.NewAPISender(responseWriter).SendResponse()
+	var dto dtos.Flashcard
+	if err := json.NewDecoder(request.Body).Decode(&dto); err != nil {
+		// TODO: Send response.
+		return
 	}
 	flashcard := structures.Flashcard{
-		Meta: structures.VerbFlashcardMeta{
-			BaseForm:       verb.BaseForm,
-			PastSimple:     verb.PastSimple,
-			PastParticiple: verb.PastParticiple,
+		Meta: structures.VerbMeta{
+			BaseForm:       dto.BaseForm,
+			PastParticiple: dto.PastParticiple,
+			PastSimple:     dto.PastSimple,
 		},
+		Type:  fixedvalues.IrregularVerb,
+		Value: dto.Value,
 	}
 	if err := store.Store.Save(request.Context(), &flashcard); err != nil {
 		log.Println(err)

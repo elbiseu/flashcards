@@ -2,21 +2,28 @@ package senders
 
 import (
 	"github.com/elbiseu/flashcards/interfaces"
+	"github.com/elbiseu/flashcards/types"
 	"log"
 	"net/http"
 )
 
-type APISender struct {
+type DefaultSender struct {
 	responseWriter http.ResponseWriter
 }
 
-func NewAPISender(responseWriter http.ResponseWriter) *APISender {
-	return &APISender{responseWriter: responseWriter}
+func NewDefaultSender(responseWriter http.ResponseWriter) *DefaultSender {
+	return &DefaultSender{responseWriter: responseWriter}
 }
 
-func (s APISender) SendResponse(apiSender interfaces.APITransfer) {
-	s.responseWriter.Header().Set("Content-Type", string(apiSender.ContentType()))
-	if _, err := s.responseWriter.Write(apiSender.Marshalled()); err != nil {
+func (ds *DefaultSender) SendResponse(dto interfaces.DTO, converterFunc types.ConverterFunc) {
+	b, contentType, err := converterFunc(dto)
+	if err != nil {
 		log.Println(err)
+		return
+	}
+	ds.responseWriter.Header().Set("Content-Type", contentType.String())
+	if _, err := ds.responseWriter.Write(b); err != nil {
+		log.Println(err)
+		return
 	}
 }

@@ -2,24 +2,24 @@ package interfaces
 
 import (
 	"context"
-	"github.com/elbiseu/flashcards/structures"
+	"github.com/elbiseu/flashcards/types"
 )
 
-type APIModifier interface {
-	Apply() APIModifier
-}
-
 type APITransfer interface {
-	ContentType() structures.ContentType
-	Marshalled() []byte
+	Transferable() ([]byte, types.ContentType, error)
 }
 
 type Gatherer interface {
 	Gathering() string
 	Identify() string
+	Database() string
 }
 
 type Storage interface {
-	Get(ctx context.Context, key string, gatherer Gatherer) error
+	Name() string
+}
+
+type Operator interface {
+	Get(ctx context.Context, gatherer Gatherer) error
 	Save(ctx context.Context, gatherer Gatherer) error
 }
