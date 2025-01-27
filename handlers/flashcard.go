@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"github.com/elbiseu/flashcards/dtos"
 	"github.com/elbiseu/flashcards/entities"
+	"github.com/elbiseu/flashcards/instances"
 	"github.com/elbiseu/flashcards/serializers"
 	"net/http"
 )
@@ -11,15 +12,20 @@ import (
 func Flashcard(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case http.MethodGet:
-		// key := request.PathValue("key")
-		entity := entities.Flashcard{}
-		// TODO: Get entity from database.
-		dto := dtos.Flashcard{
-			Key:   entity.Key,
-			Type:  entity.Type,
-			Value: entity.Value,
+		key := r.PathValue("key")
+		flashcardEntity := &entities.Flashcard{
+			Key: key,
 		}
-		b, err := serializers.NewDefaultSerializer(w).Serialize(&dto)
+		if err := instances.Store.Get(flashcardEntity); err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+		flashcardDTO := &dtos.Flashcard{
+			Key:   flashcardEntity.Key,
+			Type:  flashcardEntity.Type,
+			Value: flashcardEntity.Value,
+		}
+		b, err := serializers.NewDefaultSerializer(flashcardDTO).Serialize()
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
@@ -29,20 +35,22 @@ func Flashcard(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	case http.MethodPost:
-		var dto dtos.Flashcard
-		if err := json.NewDecoder(r.Body).Decode(&dto); err != nil {
+		flashcardDTO := &dtos.Flashcard{}
+		if err := json.NewDecoder(r.Body).Decode(flashcardDTO); err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
-		/*
-			flashcard := entities.Flashcard{
-				Key:   dto.Key,
-				Type:  dto.Type,
-				Value: dto.Value,
-			}
-		*/
-		// TODO: Store entity in database.
+		flashcardEntity := &entities.Flashcard{
+			Key:   flashcardDTO.Key,
+			Type:  flashcardDTO.Type,
+			Value: flashcardDTO.Value,
+		}
+		if err := instances.Store.Put(flashcardEntity); err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
 		w.WriteHeader(http.StatusCreated)
 	default:
-		// TODO: Send response.
+		w.WriteHeader(http.StatusNotImplemented)
 	}
 }

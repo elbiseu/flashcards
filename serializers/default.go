@@ -3,18 +3,16 @@ package serializers
 import (
 	"encoding/json"
 	"github.com/elbiseu/flashcards/interfaces"
-	"net/http"
 )
 
 type DefaultSerializer struct {
-	w http.ResponseWriter
+	dto interfaces.DTO
 }
 
-func NewDefaultSerializer(w http.ResponseWriter) *DefaultSerializer {
-	return &DefaultSerializer{w: w}
+func NewDefaultSerializer(dto interfaces.DTO) *DefaultSerializer {
+	return &DefaultSerializer{dto: dto}
 }
 
-func (ds *DefaultSerializer) Serialize(dto interfaces.DTO) ([]byte, error) {
-	b, err := json.Marshal(dto.ToMap())
-	return b, err
+func (ds *DefaultSerializer) Serialize() ([]byte, error) {
+	return json.Marshal(ds.dto.ToMap())
 }
